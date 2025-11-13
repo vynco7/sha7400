@@ -79,25 +79,9 @@ Hex Length	64 karakter	1.850 karakter
 Tujuan	Standar Keamanan	Eksperimen / Pendidikan
 Status	FIPS Standard	Experimental / Unsafe
 
-🔧 Contoh Integrasi Kode
 
-Jika Anda ingin mengimpor fungsi ini ke script lain:
-Python
 
-import manual_sha7400_1000_params as hasher
 
-# 1. Definisikan params (atau load dari file)
-my_params = ["param_001", "param_002", ... "param_1000"]
-
-# 2. Siapkan pesan dalam bytes
-pesan = b"Halo Dunia"
-
-# 3. Generate Hash
-hasil = hasher.sha_super7400(pesan, my_params)
-
-# 4. Simpan ke file
-with open("hash_result.txt", "w") as f:
-    f.write(hasil.hex())
 
 ❓ FAQ
 
