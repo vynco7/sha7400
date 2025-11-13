@@ -1,169 +1,128 @@
+Markdown
 
+# 🔐 SHA‑super‑7400
 
+![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Status](https://img.shields.io/badge/Experimental-Do%20Not%20Use-red)
 
-<!-- README HTML for SHA-super-7400 -->
-<!doctype html>
-<html lang="id">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>SHA-super-7400 — README</title>
-  <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial; line-height:1.6; color:#0b0f16; padding:24px; background:#fafbfc; }
-    .container { max-width:900px; margin:0 auto; background:#fff; border-radius:10px; padding:28px; box-shadow:0 6px 30px rgba(16,24,40,0.06); }
-    h1 { font-size:28px; margin-bottom:6px; }
-    .meta { color:#475569; margin-bottom:18px; }
-    .badges img { height:20px; margin-right:8px; vertical-align:middle; }
-    pre { background:#0b1220; color:#dbeafe; padding:12px; border-radius:8px; overflow:auto; font-size:13px; }
-    code { background:#f1f5f9; padding:2px 6px; border-radius:6px; }
-    .section { margin-top:20px; }
-    table { border-collapse:collapse; width:100%; margin:12px 0; }
-    th, td { border:1px solid #e6eef6; padding:10px; text-align:left; }
-    th { background:#f1f5f9; }
-    .cta { display:inline-block; background:#0b5fff; color:white; padding:10px 14px; border-radius:8px; text-decoration:none; margin-top:12px; }
-    .note { background:#fff7ed; border-left:4px solid #f59e0b; padding:10px; border-radius:6px; color:#92400e; margin:12px 0; }
-    .danger { background:#fff1f2; border-left:4px solid #ef4444; padding:10px; border-radius:6px; color:#9f1239; margin:12px 0; }
-    ul { margin-left:18px; }
-    .kbi { font-weight:600; color:#0b1220; }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <header>
-      <h1>🔐 SHA‑super‑7400</h1>
-      <p class="meta">Implementasi hash eksperimental terinspirasi SHA‑256 dengan output diperpanjang menjadi <strong>7.400 bit</strong> (~925 byte) dan mendukung 1.000 parameter input untuk penelitian dan pembelajaran kriptografi.</p>
-      <div class="badges">
-        <img alt="python" src="https://img.shields.io/badge/Python-3.x-blue?logo=python&logoColor=white">
-        <img alt="license" src="https://img.shields.io/badge/License-MIT-green">
-        <img alt="status" src="https://img.shields.io/badge/Experimental-Do%20Not%20Use-red">
-      </div>
-    </header>
+Implementasi hash eksperimental yang terinspirasi oleh SHA‑256 dengan output diperpanjang menjadi **7.400 bit** (~925 byte) dan mendukung **1.000 parameter input** literal untuk keperluan penelitian dan pembelajaran kriptografi.
 
-    <div class="section">
-      <h2>Ringkasan</h2>
-      <p><strong>SHA‑super‑7400</strong> adalah prototipe hash panjang berbasis ide SHA‑256, dibuat untuk:</p>
-      <ul>
-        <li>Eksperimen output panjang (XOF‑like)</li>
-        <li>Belajar dan memahami mekanisme hash</li>
-        <li>Menguji pengaruh parameter tambahan (1000 input literal)</li>
-      </ul>
-      <div class="note">
-        <strong>Catatan:</strong> Tidak direkomendasikan untuk proteksi data sensitif, password, atau kunci kriptografi nyata.
-      </div>
-    </div>
+---
 
-    <div class="section">
-      <h2>Fitur Utama</h2>
-      <ul>
-        <li>Output panjang: <strong>7.400 bit</strong> (~925 byte / 1.850 karakter hex).</li>
-        <li>Memanfaatkan <strong>1.000 parameter input</strong> yang memengaruhi proses hashing.</li>
-        <li>Konstanta <strong>K</strong> yang dapat dimodifikasi untuk eksperimen.</li>
-        <li>Fungsi modular: ROTR, SHR, Ch, Maj, Σ, σ tersedia untuk eksplorasi.</li>
-        <li>Python murni, mudah dibaca dan dimodifikasi.</li>
-      </ul>
-    </div>
+## 📝 Ringkasan
 
-    <div class="section">
-      <h2>Instalasi & Persyaratan</h2>
-      <pre><code># clone repo
-git clone https://github.com/&lt;username&gt;/sha-super-7400.git
+**SHA‑super‑7400** adalah prototipe hash panjang berbasis logika SHA‑256 yang dimodifikasi. Proyek ini dibuat untuk:
+* Eksperimen dengan output hash yang sangat panjang (XOF-like).
+* Mempelajari mekanisme internal fungsi hash (ROTR, Sigma, Padding).
+* Menguji pengaruh avalanche effect dari 1.000 parameter input tambahan.
+
+> [!WARNING]
+> **PENTING:** Algoritma ini adalah **eksperimen pendidikan**. Tidak diaudit oleh kriptografer profesional. **JANGAN** digunakan untuk mengamankan password, transaksi keuangan, atau data sensitif di lingkungan produksi.
+
+---
+
+## ✨ Fitur Utama
+
+* **Output Masif:** Menghasilkan digest 7.400 bit (1.850 karakter Hexadecimal).
+* **1.000 Parameter:** Menggunakan array `params` berisi 1.000 string literal yang mempengaruhi hasil hash secara unik.
+* **Pure Python:** Ditulis menggunakan pustaka standar `struct` tanpa dependensi eksternal.
+* **Modular:** Fungsi inti (Ch, Maj, Σ, σ) ditulis manual untuk transparansi logika.
+
+---
+
+## 🚀 Instalasi & Penggunaan
+
+### 1. Clone Repository
+```bash
+git clone [https://github.com/username-anda/sha-super-7400.git](https://github.com/username-anda/sha-super-7400.git)
 cd sha-super-7400
 
-# jalankan contoh
-python3 sha7400.py
-      </code></pre>
-    </div>
+2. Menjalankan Script
 
-    <div class="section">
-      <h2>Contoh Penggunaan</h2>
-      <p>Input pesan bebas, output hash 7.400 bit dihasilkan:</p>
-      <pre><code>Masukkan pesan: contoh_input
-SHA-super-7400 (hex, first 7400 chars): 2fd272fc52627aeb2b79...
+Pastikan Anda sudah mengedit bagian msg atau params di dalam script sesuai kebutuhan, lalu jalankan:
+Bash
+
+python3 manual_sha7400_1000_params.py
+
+3. Contoh Output
+
+Plaintext
+
+--- SHA SUPER 7400 ---
+Masukkan pesan yang ingin di-hash: rahasia_negara
+
+=== HASIL ===
+Pesan asli: rahasia_negara
+SHA-super-7400 (hex, first 100 chars): 8a2f... (dipotong)
 Total hex length: 1850
 Panjang hash (bytes): 925
 Panjang hash (bits): 7400
-Elapsed: 5.328s
-      </code></pre>
-      <p><strong>Opsional:</strong> Simpan output hex ke file <code>super7400.hex</code>.</p>
-    </div>
+Elapsed: 0.045s
 
-    <div class="section">
-      <h2>Desain & Arsitektur</h2>
-      <ol>
-        <li><strong>Input:</strong> pesan (bytes) + 1000 parameter (list literal/file).</li>
-        <li><strong>Core:</strong> Fungsi SHA-like (ROTR/SHR, Ch/Maj, big/small sigma) diperluas untuk menerima input parameter.</li>
-        <li><strong>Compression:</strong> 64 ronde per blok, konstanta <code>K</code> dan W[0..63] dimodifikasi.</li>
-        <li><strong>Output Extension:</strong> Core dipanggil berulang hingga menghasilkan 925 byte.</li>
-      </ol>
-    </div>
+🏗️ Desain & Arsitektur
 
-    <div class="section">
-      <h2>Perbandingan: SHA‑256 vs SHA‑super‑7400</h2>
-      <table>
-        <thead><tr><th>Aspek</th><th>SHA‑256</th><th>SHA‑super‑7400</th></tr></thead>
-        <tbody>
-          <tr><td>Output</td><td>256 bit</td><td>7.400 bit (~925 byte)</td></tr>
-          <tr><td>Parameter input</td><td>—</td><td>1.000 parameter literal</td></tr>
-          <tr><td>Ronde</td><td>64</td><td>64 per block, modifikasi fungsi internal</td></tr>
-          <tr><td>Tujuan</td><td>Standar kriptografi</td><td>Eksperimen / pendidikan</td></tr>
-          <tr><td>Keamanan</td><td>Peer-reviewed</td><td>Tidak diaudit — jangan gunakan produksi</td></tr>
-        </tbody>
-      </table>
-    </div>
+    Input: Menerima pesan (bytes) + List 1.000 parameter string.
 
-    <div class="section">
-      <h2>Contoh Integrasi Input & Params</h2>
-      <pre><code># baca params dari file
-params1000 = [line.strip() for line in open('params.txt','r',encoding='utf-8')]
+    Core Engine: Menggunakan struktur dasar SHA-256 (64 ronde) namun dimodifikasi untuk menerima injeksi parameter eksternal.
 
-# input pesan dari user
-msg = input("Masukkan pesan: ").encode('utf-8')
+    Compression: Melakukan operasi bitwise (XOR, AND, ROTR) terhadap state internal.
 
-# panggil generator XOF-like
-long_hash = sha_super7400(msg, params1000)
+    Extension: Loop eksekusi dilakukan berulang kali untuk memperpanjang output hingga mencapai target 925 byte.
 
-# simpan hasil hex
-open('super7400.hex','w').write(long_hash.hex())
-      </code></pre>
-    </div>
+📊 Perbandingan: SHA‑256 vs SHA‑super‑7400
 
-    <div class="section">
-      <h2>FAQ</h2>
-      <p><strong>Q:</strong> Aman untuk password/kunci?</p>
-      <p><strong>A:</strong> <span class="kbi">Tidak</span>. Gunakan SHA‑3, Argon2, bcrypt atau HMAC untuk keamanan nyata.</p>
+Aspek	SHA‑256	SHA‑super‑7400
+Output Size	256 bit (32 byte)	7.400 bit (925 byte)
+Input Params	Pesan saja	Pesan + 1.000 Params Literal
+Hex Length	64 karakter	1.850 karakter
+Tujuan	Standar Keamanan	Eksperimen / Pendidikan
+Status	FIPS Standard	Experimental / Unsafe
 
-      <p><strong>Q:</strong> Apakah output 7.400 karakter?</p>
-      <p><strong>A:</strong> Bukan, output 7.400 <em>bit</em> (925 byte). Hex-nya 1.850 karakter.</p>
+🔧 Contoh Integrasi Kode
 
-      <p><strong>Q:</strong> Bisa dibalik (reverse) untuk menemukan input?</p>
-      <p><strong>A:</strong> Tidak. Brute-force praktis tidak mungkin karena ruang output sangat besar.</p>
-    </div>
+Jika Anda ingin mengimpor fungsi ini ke script lain:
+Python
 
-    <div class="section">
-      <h2>Tips GitHub & Publikasi</h2>
-      <ul>
-        <li>Judul repo jelas: <code>sha-super-7400</code></li>
-        <li>Sertakan demo, screenshot, atau GIF generator.</li>
-        <li>Gunakan topics: <code>cryptography</code>, <code>hash</code>, <code>python</code>, <code>experimental</code>, <code>xof</code></li>
-        <li>Commit message deskriptif & buat CHANGELOG.md.</li>
-        <li>Buat CONTRIBUTING.md & issue template untuk kontribusi.</li>
-      </ul>
-      <a class="cta" href="https://github.com/&lt;username&gt;/sha-super-7400">Fork & Contribute →</a>
-    </div>
+import manual_sha7400_1000_params as hasher
 
-    <div class="section">
-      <h2>Lisensi</h2>
-      <p>MIT License — bebas dipakai & dimodifikasi, dengan catatan ini eksperimen, jangan gunakan di produksi kritikal.</p>
-    </div>
+# 1. Definisikan params (atau load dari file)
+my_params = ["param_001", "param_002", ... "param_1000"]
 
-    <div class="section">
-      <h2>Kontribusi & Kontak</h2>
-      <p>Fork repo dan kirim pull request untuk eksperimen kriptografi. Diskusi desain & audit melalui GitHub Issues.</p>
-    </div>
+# 2. Siapkan pesan dalam bytes
+pesan = b"Halo Dunia"
 
-    <footer style="margin-top:22px; color:#475569;">
-      <small>Created with ❤️ — Eksperimen kriptografi. Jangan gunakan pada data sensitif tanpa audit. © 2025</small>
-    </footer>
-  </div>
-</body>
-</html>
+# 3. Generate Hash
+hasil = hasher.sha_super7400(pesan, my_params)
+
+# 4. Simpan ke file
+with open("hash_result.txt", "w") as f:
+    f.write(hasil.hex())
+
+❓ FAQ
+
+Q: Bisakah saya menggunakan ini untuk hashing password user? A: Tidak. Gunakan standar industri seperti Argon2, bcrypt, atau SHA-256 + Salt. Algoritma ini belum teruji ketahanannya terhadap serangan kolisi (collision attack).
+
+Q: Mengapa outputnya sangat panjang? A: Ini disengaja untuk mempelajari perilaku fungsi hash ketika dipaksa menghasilkan output yang jauh melebihi state internal aslinya (mirip konsep XOF / Extendable-Output Function).
+
+Q: Apakah bisa dibalik (decrypt) untuk melihat pesan asli? A: Secara teori tidak (karena ini fungsi satu arah), namun karena ini algoritma buatan sendiri, mungkin terdapat celah matematika yang belum ditemukan.
+
+🤝 Kontribusi
+
+Kontribusi sangat diterima untuk tujuan pembelajaran!
+
+    Fork repository ini.
+
+    Buat branch fitur baru (git checkout -b fitur-baru).
+
+    Commit perubahan Anda (git commit -m 'Menambah fitur X').
+
+    Push ke branch (git push origin fitur-baru).
+
+    Buat Pull Request.
+
+📄 Lisensi
+
+Didistribusikan di bawah MIT License. Lihat LICENSE untuk informasi lebih lanjut.
+
+<p align="center"> <small>Created with ❤️ — Eksperimen Kriptografi 2025</small> </p>
